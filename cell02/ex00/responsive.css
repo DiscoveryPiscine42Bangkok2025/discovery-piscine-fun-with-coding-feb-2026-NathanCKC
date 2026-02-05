@@ -1,0 +1,22 @@
+table {
+    width: 100%;   
+    border-collapse: collapse;
+    border: 1px solid black;
+    font-family: sans-serif;
+}
+
+td {
+    width: 50%;
+    height: 150px;
+    padding: 15px;
+    vertical-align: middle;
+    border: 1px solid black;
+}
+
+.box-one {
+    background-color: #c4d685; 
+}
+
+.box-two {
+    background-color: #f7c6b7;
+}
