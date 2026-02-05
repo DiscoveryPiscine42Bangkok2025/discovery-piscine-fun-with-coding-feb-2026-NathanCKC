@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calc</title>
+</head>
+<body>
+
+    <div class="calculator">
+        <input type="text" id="leftMember" placeholder="Left">
+
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+
+        <input type="text" id="rightMember" placeholder="Right">
+
+        <input type="submit" id="calculateBtn" value="Try me!">
+    </div>
+
+    <script>
+        const leftInput = document.getElementById('leftMember');
+        const rightInput = document.getElementById('rightMember');
+        const operatorSelect = document.getElementById('operator');
+        const btn = document.getElementById('calculateBtn');
+
+        function isValidInteger(str) {
+            const num = Number(str);
+            return Number.isInteger(num) && num >= 0 && str.trim() !== "";
+        }
+
+        btn.addEventListener('click', function() {
+            const leftVal = leftInput.value;
+            const rightVal = rightInput.value;
+            const operator = operatorSelect.value;
+
+            if (!isValidInteger(leftVal) || !isValidInteger(rightVal)) {
+                alert("Error :(");
+                console.log("Error :(");
+                return;
+            }
+
+            const l = parseInt(leftVal);
+            const r = parseInt(rightVal);
+            let result;
+
+            if ((operator === '/' || operator === '%') && r === 0) {
+                const msg = "It’s over 9000!";
+                alert(msg);
+                console.log(msg);
+                return;
+            }
+
+            switch (operator) {
+                case '+': result = l + r; break;
+                case '-': result = l - r; break;
+                case '*': result = l * r; break;
+                case '/': result = l / r; break;
+                case '%': result = l % r; break;
+            }
+
+            alert(result);
+            console.log(result);
+        });
+
+        setInterval(function() {
+            alert("Please, use me...");
+        }, 30000);
+
+    </script>
+
+</body>
+</html>
