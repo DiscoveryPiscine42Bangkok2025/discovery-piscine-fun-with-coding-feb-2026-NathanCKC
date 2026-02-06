@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator (jQuery)</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <div class="calculator">
+        <input type="text" id="leftMember" placeholder="Left">
+
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+
+        <input type="text" id="rightMember" placeholder="Right">
+
+        <input type="submit" id="calculateBtn" value="Try me!">
+    </div>
+
+    <script>
+        setInterval(function() {
+            alert("Please, use me...");
+        }, 30000);
+
+        $(document).ready(function() {
+
+            function isValid(val) {
+                return /^\d+$/.test(val);
+            }
+
+            $('#calculateBtn').click(function() {
+                const lStr = $('#leftMember').val();
+                const rStr = $('#rightMember').val();
+                const op = $('#operator').val();
+
+                if (!isValid(lStr) || !isValid(rStr)) {
+                    alert("Error :(");
+                    console.log("Error :(");
+                    return;
+                }
+
+                const l = parseInt(lStr);
+                const r = parseInt(rStr);
+                let result;
+
+                if ((op === '/' || op === '%') && r === 0) {
+                    const msg = "It’s over 9000!";
+                    alert(msg);
+                    console.log(msg);
+                    return;
+                }
+
+                if (op === '+') result = l + r;
+                else if (op === '-') result = l - r;
+                else if (op === '*') result = l * r;
+                else if (op === '/') result = l / r;
+                else if (op === '%') result = l % r;
+
+                alert(result);
+                console.log(result);
+            });
+        });
+    </script>
+
+</body>
+</html>
